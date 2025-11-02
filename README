@@ -1,17 +1,17 @@
-🤖 SALAM – Saudi Labor Law AI Assistant
+ SALAM – Saudi Labor Law AI Assistant
 
 SALAM is an AI-powered assistant that provides accurate, bilingual (Arabic–English) answers about Saudi labor law with official article citations.  
 It helps employees and HR teams understand their rights and obligations without relying on expensive consultations or complex manual research.
 
 ─────────────────────────────
-📌 Problem Statement
+ Problem Statement
 
 Employees and HR departments in Saudi Arabia face difficulties accessing accurate and clear information on local labor laws due to:
 - Complex legal language  
 - Scattered and hard-to-access official sources  
 - High costs of legal consultations  
 
-🚨 Consequences:
+ Consequences:
 - Misunderstanding of rights and obligations  
 - Financial risks and penalties  
 - Wasted time and costly manual research  
@@ -20,13 +20,13 @@ Employees and HR departments in Saudi Arabia face difficulties accessing accurat
 💡 Proposed Solution
 
 SALAM provides:
-- 💬 AI-powered chatbot (RAG) answering labor law questions  
-- ⚙️ Smart tools (End-of-Service calculator, Saudization checker)  
-- 🌐 Web-based and bilingual interface (Arabic + English)  
-- 🧠 Accurate answers with official citations  
+-  AI-powered chatbot (RAG) answering labor law questions  
+-  Smart tools (End-of-Service calculator, Saudization checker)  
+-  Web-based and bilingual interface (Arabic + English)  
+-  Accurate answers with official citations  
 
 ─────────────────────────────
-🧩 System Architecture
+System Architecture
 
 A four-stage Retrieval-Augmented Generation (RAG) pipeline:
 1. Question → User enters a query (Arabic or English)  
@@ -34,7 +34,7 @@ A four-stage Retrieval-Augmented Generation (RAG) pipeline:
 3. Rerank → Jina Reranker improves precision  
 4. Generate → Qwen 2.5 LLM generates structured bilingual answer  
 
-🧠 Models Used:
+Models Used:
 
 | Purpose     | Model                                         | Description                          |
 |-------------|-----------------------------------------------|--------------------------------------|
@@ -44,7 +44,7 @@ A four-stage Retrieval-Augmented Generation (RAG) pipeline:
 | Translator  | Helsinki-NLP/opus-mt-en-ar                    | On-demand English–Arabic translation |
 
 ─────────────────────────────
-⚙️ Tech Stack
+Tech Stack
 
 - Backend: FastAPI (Python)  
 - Frontend: HTML + JavaScript  
@@ -69,9 +69,13 @@ data/
 index/
 ├── faiss/index.faiss    → FAISS vector index
 └── meta.json            → Metadata for each article
+eval/  
+├── qa_eval.jsonl        → Evaluation dataset (questions + gold articles)  
+├── retrieval_eval.py    → Script for evaluating retriever performance (Hit@K, MRR, NDCG)  
+└── generation_eval.py   → Script for evaluating LLM output structure and citation accuracy  
 
 ─────────────────────────────
-🚀 How to Run Locally
+ How to Run Locally
 
 1. Install dependencies  
    pip install -r requirements.txt
@@ -84,6 +88,13 @@ index/
 
 4. Open the frontend  
    Open frontend/index.html in your browser.
+
+─────────────────────────────
+ How to Run Evaluation
+
+To test retrieval quality:
+
+python eval/retrieval_eval.py
 
 ─────────────────────────────
 ⚖️ Disclaimer
