@@ -1,4 +1,3 @@
-"""
 # 🤖 SALAM – Saudi Labor Law AI Assistant
 
 **SALAM** is an AI-powered assistant that provides accurate, bilingual (Arabic–English) answers about **Saudi labor law** with official article citations.  
@@ -24,6 +23,7 @@ Employees and HR departments in Saudi Arabia face difficulties accessing accurat
 
 **SALAM** provides:
 - 💬 AI-powered chatbot (RAG) answering labor law questions  
+- ⚙️ Smart tools (End-of-Service calculator, Saudization checker)  
 - 🌐 Web-based and bilingual interface (Arabic + English)  
 - 🧠 Accurate answers with official citations  
 
@@ -31,29 +31,30 @@ Employees and HR departments in Saudi Arabia face difficulties accessing accurat
 
 ## 🧩 System Architecture
 
-A four-stage Retrieval-Augmented Generation (RAG) pipeline:
-1. Question → User enters a query (Arabic or English)  
-2. Retrieve → FAISS vector search finds top relevant articles  
-3. Rerank → Jina Reranker improves precision  
-4. Generate → Qwen 2.5 LLM generates structured bilingual answer  
+A four-stage **Retrieval-Augmented Generation (RAG)** pipeline:
+1. **Question** → User enters a query (Arabic or English)  
+2. **Retrieve** → FAISS vector search finds top relevant articles  
+3. **Rerank** → Jina Reranker improves precision  
+4. **Generate** → Qwen 2.5 LLM generates structured bilingual answer  
 
 ### 🧠 Models Used
+
 | Purpose     | Model                                         | Description                          |
 |-------------|-----------------------------------------------|--------------------------------------|
-| Embeddings  | BAAI/bge-m3                                   | Multilingual dense vector retriever  |
-| Reranker    | jinaai/jina-reranker-v2-base-multilingual     | Cross-encoder reranker               |
-| Generator   | Qwen/Qwen2.5-7B-Instruct                      | LLM for structured answer generation |
-| Translator  | Helsinki-NLP/opus-mt-en-ar                    | On-demand English–Arabic translation |
+| Embeddings  | `BAAI/bge-m3`                                 | Multilingual dense vector retriever  |
+| Reranker    | `jinaai/jina-reranker-v2-base-multilingual`   | Cross-encoder reranker               |
+| Generator   | `Qwen/Qwen2.5-7B-Instruct`                    | LLM for structured answer generation |
+| Translator  | `Helsinki-NLP/opus-mt-en-ar`                  | On-demand English–Arabic translation |
 
 ---
 
 ## ⚙️ Tech Stack
 
-- Backend: FastAPI (Python)  
-- Frontend: HTML + JavaScript  
-- Models: HuggingFace Transformers  
-- Vector Search: FAISS  
-- Deployment (planned): Docker + Cloud  
+- **Backend:** FastAPI (Python)  
+- **Frontend:** HTML + JavaScript  
+- **Models:** HuggingFace Transformers  
+- **Vector Search:** FAISS  
+- **Deployment (planned):** Docker + Cloud  
 
 ---
 
@@ -76,7 +77,9 @@ index/
 
 ---
 
+
 ## 🚀 How to Run Locally
+
 
 1. Install dependencies
    pip install -r requirements.txt
