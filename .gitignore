@@ -9,9 +9,8 @@ build/
 *.log
 
 # Virtual environments
-venv/
+env/
 .env
-
 
 # VS Code settings
 .vscode/

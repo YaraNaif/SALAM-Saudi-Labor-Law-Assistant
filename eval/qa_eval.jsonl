@@ -1,0 +1,31 @@
+{"question": "ماهي مهلة الإشعار عند الاستقالة؟", "gold_articles": ["Article 75"], "requires_article": true, "notes": "Notice period for resignation (indefinite contract)"}
+{"question": "هل أقدر أخذ إجازة بدون راتب؟", "gold_articles": ["Article 116"], "requires_article": true, "notes": "Unpaid leave upon employer approval"}
+{"question": "ما مدة الإجازة المرضية المدفوعة الأجر؟", "gold_articles": ["Article 117"], "requires_article": true, "notes": "Paid sick leave duration"}
+{"question": "هل أستلم بدل عن الإجازة السنوية لو استقلت قبل استخدامها؟", "gold_articles": ["Article 111"], "requires_article": true, "notes": "Payment for unused annual leave upon termination"}
+{"question": "هل يمكن لصاحب العمل إنهاء العقد أثناء فترة التجربة؟", "gold_articles": ["Article 53"], "requires_article": true, "notes": "Termination during probation period"}
+{"question": "What is the probation period length under Saudi labor law?", "gold_articles": ["Article 53"], "requires_article": true, "notes": "Probation period limit"}
+{"question": "What happens if I resign without notice?", "gold_articles": ["Article 75"], "requires_article": true, "notes": "Resignation without required notice period"}
+{"question": "Can my employer fire me without a valid reason?", "gold_articles": ["Article 80"], "requires_article": true, "notes": "Termination without legitimate reason"}
+{"question": "هل يمكن لصاحب العمل فصل العامل دون سبب مشروع؟", "gold_articles": ["Article 80"], "requires_article": true, "notes": "Unlawful termination"}
+{"question": "ماهي حقوقي إذا تم إنهاء العقد لأسباب غير مشروعة؟", "gold_articles": ["Article 77"], "requires_article": true, "notes": "Compensation for unlawful termination"}
+{"question": "What are the employee rights after termination?", "gold_articles": ["Article 77"], "requires_article": true, "notes": "Employee compensation after termination"}
+{"question": "هل يمكن أخذ إجازة لأداء الامتحانات الدراسية؟", "gold_articles": ["Article 115"], "requires_article": true, "notes": "Educational exam leave"}
+{"question": "هل يحق للعامل الحصول على إجازة زواج؟", "gold_articles": ["Article 113"], "requires_article": true, "notes": "Marriage leave entitlement"}
+{"question": "How many days of annual leave are employees entitled to?", "gold_articles": ["Article 109"], "requires_article": true, "notes": "Annual leave entitlement days"}
+{"question": "ماهي مدة الإجازة السنوية في نظام العمل السعودي؟", "gold_articles": ["Article 109"], "requires_article": true, "notes": "Annual leave duration (Arabic)"}
+{"question": "هل يمكن تأجيل الإجازة السنوية؟", "gold_articles": ["Article 110"], "requires_article": true, "notes": "Deferring annual leave"}
+{"question": "ماهي إجازة العدة للمرأة المسلمة؟", "gold_articles": ["Article 160"], "requires_article": true, "notes": "Iddah leave for Muslim female worker"}
+{"question": "What is the maternity leave duration and pay?", "gold_articles": ["Article 151"], "requires_article": true, "notes": "Maternity leave duration and pay"}
+{"question": "ماهي إجازة الوضع في نظام العمل السعودي؟", "gold_articles": ["Article 151"], "requires_article": true, "notes": "Maternity leave in Arabic"}
+{"question": "هل يمكن فصل العامل أثناء إجازة المرض؟", "gold_articles": ["Article 82"], "requires_article": true, "notes": "Termination during sick leave"}
+{"question": "When must wages be paid to the employee?", "gold_articles": ["Article 90"], "requires_article": true, "notes": "Timing of wage payment"}
+{"question": "هل يحق للعامل الحصول على شهادة خبرة بعد انتهاء العقد؟", "gold_articles": ["Article 64"], "requires_article": true, "notes": "Experience certificate upon end of service"}
+{"question": "هل يحق للعامل الاعتراض على خصم الراتب؟", "gold_articles": ["Article 91"], "requires_article": true, "notes": "Wage deduction and complaint"}
+{"question": "ماهي عقوبة تأخير صرف الرواتب؟", "gold_articles": ["Article 90"], "requires_article": true, "notes": "Penalty for delayed salary payment"}
+{"question": "هل يمكن لصاحب العمل إلزام العامل بساعات إضافية؟", "gold_articles": ["Article 107"], "requires_article": true, "notes": "Overtime work regulation"}
+{"question": "What is the maximum daily working hours?", "gold_articles": ["Article 98"], "requires_article": true, "notes": "Maximum working hours per day"}
+{"question": "ماهي عدد ساعات العمل اليومية؟", "gold_articles": ["Article 98"], "requires_article": true, "notes": "Working hours per day (Arabic)"}
+{"question": "Can employees work during official holidays?", "gold_articles": ["Article 107"], "requires_article": true, "notes": "Holiday work compensation"}
+{"question": "ماهي حالات انتهاء عقد العمل؟", "gold_articles": ["Article 74"], "requires_article": true, "notes": "Causes for employment contract termination"}
+{"question": "What happens to the employment contract when the worker dies?", "gold_articles": ["Article 74"], "requires_article": true, "notes": "Contract termination on death of worker"}
+{"question": "هل يمكن تجديد العقد المحدد المدة تلقائياً؟", "gold_articles": ["Article 55"], "requires_article": true, "notes": "Renewal of fixed-term contract"}

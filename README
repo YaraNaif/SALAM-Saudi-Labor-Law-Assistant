@@ -1,104 +1,92 @@
-# 🤖 SALAM – Saudi Labor Law AI Assistant
+🤖 SALAM – Saudi Labor Law AI Assistant
 
-**SALAM** is an AI-powered assistant that provides accurate, bilingual (Arabic–English) answers about **Saudi labor law** with official article citations.  
-It helps **employees** and **HR teams** understand their rights and obligations without relying on expensive consultations or complex manual research.
+SALAM is an AI-powered assistant that provides accurate, bilingual (Arabic–English) answers about Saudi labor law with official article citations.  
+It helps employees and HR teams understand their rights and obligations without relying on expensive consultations or complex manual research.
 
----
-
-## 📌 Problem Statement
+─────────────────────────────
+📌 Problem Statement
 
 Employees and HR departments in Saudi Arabia face difficulties accessing accurate and clear information on local labor laws due to:
 - Complex legal language  
 - Scattered and hard-to-access official sources  
 - High costs of legal consultations  
 
-### 🚨 Consequences
+🚨 Consequences:
 - Misunderstanding of rights and obligations  
 - Financial risks and penalties  
 - Wasted time and costly manual research  
 
----
+─────────────────────────────
+💡 Proposed Solution
 
-## 💡 Proposed Solution
-
-**SALAM** provides:
+SALAM provides:
 - 💬 AI-powered chatbot (RAG) answering labor law questions  
 - ⚙️ Smart tools (End-of-Service calculator, Saudization checker)  
 - 🌐 Web-based and bilingual interface (Arabic + English)  
 - 🧠 Accurate answers with official citations  
 
----
+─────────────────────────────
+🧩 System Architecture
 
-## 🧩 System Architecture
+A four-stage Retrieval-Augmented Generation (RAG) pipeline:
+1. Question → User enters a query (Arabic or English)  
+2. Retrieve → FAISS vector search finds top relevant articles  
+3. Rerank → Jina Reranker improves precision  
+4. Generate → Qwen 2.5 LLM generates structured bilingual answer  
 
-A four-stage **Retrieval-Augmented Generation (RAG)** pipeline:
-1. **Question** → User enters a query (Arabic or English)  
-2. **Retrieve** → FAISS vector search finds top relevant articles  
-3. **Rerank** → Jina Reranker improves precision  
-4. **Generate** → Qwen 2.5 LLM generates structured bilingual answer  
-
-### 🧠 Models Used
+🧠 Models Used:
 
 | Purpose     | Model                                         | Description                          |
 |-------------|-----------------------------------------------|--------------------------------------|
-| Embeddings  | `BAAI/bge-m3`                                 | Multilingual dense vector retriever  |
-| Reranker    | `jinaai/jina-reranker-v2-base-multilingual`   | Cross-encoder reranker               |
-| Generator   | `Qwen/Qwen2.5-7B-Instruct`                    | LLM for structured answer generation |
-| Translator  | `Helsinki-NLP/opus-mt-en-ar`                  | On-demand English–Arabic translation |
+| Embeddings  | BAAI/bge-m3                                   | Multilingual dense vector retriever  |
+| Reranker    | jinaai/jina-reranker-v2-base-multilingual     | Cross-encoder reranker               |
+| Generator   | Qwen/Qwen2.5-7B-Instruct                      | LLM for structured answer generation |
+| Translator  | Helsinki-NLP/opus-mt-en-ar                    | On-demand English–Arabic translation |
 
----
+─────────────────────────────
+⚙️ Tech Stack
 
-## ⚙️ Tech Stack
+- Backend: FastAPI (Python)  
+- Frontend: HTML + JavaScript  
+- Models: HuggingFace Transformers  
+- Vector Search: FAISS  
+- Deployment (planned): Docker + Cloud  
 
-- **Backend:** FastAPI (Python)  
-- **Frontend:** HTML + JavaScript  
-- **Models:** HuggingFace Transformers  
-- **Vector Search:** FAISS  
-- **Deployment (planned):** Docker + Cloud  
-
----
-
-## 📂 Project Structure
+─────────────────────────────
+📂 Project Structure
 
 app/
-├── build_index.py       # PDF parsing & FAISS index builder
-├── config.py            # Paths and model configurations
-├── retriever.py         # Dense retriever + reranker logic
-├── llm_engine.py        # LLM + translator + prompt builder
-├── main.py              # FastAPI backend
-├── schemas.py           # Pydantic models
+├── build_index.py       → PDF parsing & FAISS index builder
+├── config.py            → Paths and model configurations
+├── retriever.py         → Dense retriever + reranker logic
+├── llm_engine.py        → LLM + translator + prompt builder
+├── main.py              → FastAPI backend
+├── schemas.py           → Pydantic models
 frontend/
-└── index.html           # Simple chat interface
+└── index.html           → Simple chat interface
 data/
-└── raw/Labor.pdf        # Source Saudi Labor Law (English)
+└── raw/Labor.pdf        → Source Saudi Labor Law (English)
 index/
-├── faiss/index.faiss    # FAISS vector index
-└── meta.json            # Metadata for each article
+├── faiss/index.faiss    → FAISS vector index
+└── meta.json            → Metadata for each article
 
----
+─────────────────────────────
+🚀 How to Run Locally
 
-
-## 🚀 How to Run Locally
-
-
-1. Install dependencies
+1. Install dependencies  
    pip install -r requirements.txt
 
-2. Build the FAISS index
+2. Build the FAISS index  
    python app/build_index.py
 
-3. Run the backend
+3. Run the backend  
    uvicorn app.main:app --reload
 
-4. Open the frontend
+4. Open the frontend  
    Open frontend/index.html in your browser.
 
----
-
-
-## ⚖️ Disclaimer
+─────────────────────────────
+⚖️ Disclaimer
 
 SALAM provides general information based on official Saudi labor law texts.  
 It is not a substitute for professional legal advice.
-"""
-
