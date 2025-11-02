@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>SALAM - Saudi Labor Law Assistant</title>
+
+    <style>
+        
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #515490 0%, #04588C 50%, #04668C 100%);
+            color: #0D0D0D;
+            min-height: 100vh;
+        }
+
+        /* ================================
+           NAVBAR
+        ================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #515490 0%, #04588C 50%, #04668C 100%);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #C62828;
+            box-shadow: 0 0 10px currentColor;
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.online {
+            background: #2E7D32;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .language-switcher {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            color: #ffffff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .language-switcher:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .get-started-btn {
+            background: #ffffff;
+            color: #04588C;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .get-started-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .get-started-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ================================
+           HERO SECTION
+        ================================ */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            /* background: linear-gradient(135deg, #bbbde3 0%, #4d80a0 50%, #04668C 100%);*/
+           /* background: linear-gradient(135deg, rgba(122, 126, 181, 0.95) 0%, rgba(92, 160, 194, 0.95) 50%, rgba(111, 177, 199, 0.95) 100%);*/
+           background: #ebebed;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-logo {
+            width: clamp(200px, 30vw, 350px);
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            max-width: 600px;
+            
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: #04588C;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+          font-size: clamp(1.5rem, 4vw, 2rem); 
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: #598da1; 
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            color: #0D0D0D;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            opacity: 0.95;
+        }
+
+        .hero-btn {
+            background: #ffffff;
+            color: #04588C;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ================================
+           CHATBOT SECTION
+        ================================ */
+        .chatbot-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(122, 126, 181, 0.95) 0%, rgba(92, 160, 194, 0.95) 50%, rgba(111, 177, 199, 0.95) 100%);
+
+        }
+
+        .chatbot-container {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .chat-card {
+            min-height: 500px;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-scroll {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #88D4F2 #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            padding: 0.5rem;
+        }
+
+        .chat-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .chat-scroll::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background-color: #88D4F2;
+            border-radius: 4px;
+        }
+
+        /* Chat bubbles */
+        .msg {
+            max-width: 85%;
+            width: fit-content;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+
+        .msg.me {
+            margin-left: auto;
+            background: linear-gradient(135deg, #04588C 0%, #04668C 100%);
+            color: #ffffff;
+            border: 1px solid #88D4F2;
+        }
+
+        .msg.bot {
+            margin-right: auto;
+            background: #F5F9FD;
+            border: 1px solid #D4E8F7;
+            color: #0D0D0D;
+        }
+
+        .msg .role {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Answer box inside bot message */
+        .answer-box {
+            background: #ffffff;
+            border: 2px solid #88D4F2;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 0.75rem;
+        }
+
+        .answer-box-title {
+            font-weight: 700;
+            color: #04668C;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #88D4F2;
+        }
+
+        /* Status boxes */
+        .status-processing {
+            background: #E8F5E9;
+            border: 2px solid #A5D6A7;
+            border-radius: 10px;
+            padding: 1rem;
+            color: #2E7D32;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .status-warning {
+            background: #FFF9E6;
+            border: 2px solid #FFE082;
+            border-radius: 10px;
+            padding: 0.85rem;
+            color: #F57F17;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-error {
+            background: #FFEBEE;
+            border: 2px solid #FFCDD2;
+            border-radius: 10px;
+            padding: 1rem;
+            color: #C62828;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Citations block */
+        .citations-block {
+            margin-top: 1rem;
+            background: #F0F7FB;
+            border: 2px solid #B3D9F2;
+            border-radius: 10px;
+            padding: 1rem;
+            direction: rtl;
+        }
+
+        .citations-title {
+            font-weight: 700;
+            color: #030A8C;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #88D4F2;
+        }
+
+        .citation-item {
+            background: #ffffff;
+            border: 1px solid #D4E8F7;
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-top: 0.65rem;
+        }
+
+        .citation-item:first-of-type {
+            margin-top: 0;
+        }
+
+        .citation-article {
+            font-weight: 700;
+            color: #04588C;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .citation-src {
+            color: #0D0D0D;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 0.3rem;
+        }
+
+        .citation-score {
+            color: #666;
+            font-size: 0.75rem;
+            font-style: italic;
+        }
+
+        /* Input area */
+        .input-row {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            margin-top: 1.25rem;
+            flex-direction: row-reverse;
+        }
+
+        .prompt-input {
+            flex: 1;
+            min-height: 3.5rem;
+            max-height: 8rem;
+            resize: none;
+            border-radius: 12px;
+            border: 2px solid #D4E8F7;
+            background: #ffffff;
+            color: #0D0D0D;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding: 0.9rem 1.1rem;
+            outline: none;
+            box-shadow: 0 2px 8px rgba(3, 10, 140, 0.08);
+            transition: all 0.3s ease;
+        }
+        .prompt-input::placeholder {
+            color: #999;
+        }
+        .prompt-input:focus {
+            border-color: #04588C;
+            box-shadow: 0 4px 16px rgba(4, 88, 140, 0.2);
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, #7A7EB5 0%, #5CA0C2 50%, #6FB1C7 100%);
+            color: #ffffff;
+            min-width: 3.5rem;
+            min-height: 3.5rem;
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 4px 16px rgba(3, 10, 140, 0.3);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            transition: all 0.2s ease;
+        }
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(3, 10, 140, 0.4);
+        }
+        .send-btn:active {
+            transform: translateY(0);
+        }
+
+        .send-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Answer formatting */
+        .answer-line {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            color: #0D0D0D;
+        }
+
+        .answer-line-numbered {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .answer-number {
+            font-weight: 700;
+            color: #04588C;
+            min-width: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .answer-text {
+            color: #0D0D0D;
+            flex: 1;
+        }
+
+        /* ================================
+           FOOTER
+        ================================ */
+        .footer {
+            background: linear-gradient(135deg, #515490 0%, #04588C 50%, #04668C 100%);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-line {
+            margin: 0.75rem 0;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .footer-line:first-child {
+            font-weight: 700;
+            font-size: 1.1rem;
+            opacity: 1;
+        }
+
+        /* ================================
+           LANGUAGE HANDLING
+        ================================ */
+        [data-lang] {
+            display: none;
+        }
+
+        body[data-current-lang="ar"] [data-lang="ar"],
+        body[data-current-lang="en"] [data-lang="en"] {
+            display: inline;
+        }
+
+        body[data-current-lang="en"] {
+            direction: ltr;
+        }
+
+        body[data-current-lang="en"] .input-row {
+            flex-direction: row;
+        }
+
+        body[data-current-lang="en"] .citations-block {
+            direction: ltr;
+        }
+
+        body[data-current-lang="en"] .msg.me {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        body[data-current-lang="en"] .msg.bot {
+            margin-right: 0;
+            margin-left: auto;
+        }
+
+        body[data-current-lang="en"] .hero-container {
+            flex-direction: row;
+        }
+
+        body[data-current-lang="ar"] .hero-container {
+            flex-direction: row-reverse;
+        }
+
+        /* ================================
+           RESPONSIVE
+        ================================ */
+        @media (max-width: 968px) {
+            .hero-container {
+                flex-direction: column !important;
+                text-align: center;
+            }
+
+            .hero-logo {
+                width: 250px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.75rem 1rem;
+            }
+
+            .navbar-container {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .navbar-right {
+                gap: 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .get-started-btn {
+                padding: 0.5rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-section {
+                padding: 5rem 1rem 2rem;
+            }
+
+            .hero-logo {
+                width: 200px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .hero-btn {
+                padding: 0.85rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            .chatbot-section {
+                padding: 2rem 1rem;
+            }
+
+            .chat-card {
+                padding: 1rem;
+                min-height: 400px;
+            }
+
+            .msg {
+                max-width: 95%;
+                font-size: 0.9rem;
+            }
+
+            .footer {
+                padding: 2rem 1rem;
+            }
+
+            .footer-line {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .msg {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body data-current-lang="ar">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <span data-lang="ar">سلام</span>
+                <span data-lang="en">SALAM</span>
+            </div>
+
+            <div class="navbar-right">
+                <div class="status-indicator">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="statusText">
+                        <span data-lang="ar">جاري الفحص...</span>
+                        <span data-lang="en">Checking...</span>
+                    </span>
+                </div>
+
+                <select id="languageSwitcher" class="language-switcher" onchange="switchLanguage(this.value)">
+                    <option value="ar">🇸🇦 العربية</option>
+                    <option value="en">🇬🇧 English</option>
+                </select>
+
+                <button class="get-started-btn" onclick="scrollToChat()">
+                    <span data-lang="ar">ابدأ الآن</span>
+                    <span data-lang="en">Get Started</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <img src="salam_logo.png" alt="SALAM Logo" class="hero-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23ffffff%22 width=%22200%22 height=%22200%22 rx=%2220%22/%3E%3Ctext x=%22100%22 y=%22110%22 font-size=%2260%22 text-anchor=%22middle%22 fill=%22%2304588C%22 font-weight=%22700%22%3ESALAM%3C/text%3E%3C/svg%3E'" />
+            
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span data-lang="ar">سلام</span>
+                    <span data-lang="en">SALAM</span>
+                </h1>
+                <h2 class="hero-subtitle">
+                    <span data-lang="ar">نظام العمل السعودي</span>
+                    <span data-lang="en">Saudi Labor Law</span>
+                </h2>
+                <p class="hero-description">
+                    <span data-lang="ar">  مساعد ذكي يستند على نظام العمل السعودي ويستخرج المادة النظامية </span>
+                    <span data-lang="en"> An Intelligent Assistant That Explains Saudi Labor Law With Official Articles</span>
+                </p>
+                <button class="hero-btn" onclick="scrollToChat()">
+                    <span data-lang="ar">ابدأ الآن</span>
+                    <span data-lang="en">Get Started</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHATBOT SECTION -->
+    <section class="chatbot-section" id="chatSection">
+        <div class="chatbot-container">
+            <div class="chat-card">
+                <div class="chat-scroll" id="chatScroll">
+                    <!-- Messages will be injected here -->
+                </div>
+
+                <div class="input-row">
+                    <button class="send-btn" id="sendBtn">
+                        <span class="send-icon">➤</span>
+                    </button>
+                    <textarea
+                        id="userInput"
+                        class="prompt-input"
+                        data-placeholder-ar="اسأل: هل أستطيع آخذ إجازة بدون راتب؟ أو ما هي فترة الإشعار إذا استقلت؟"
+                        data-placeholder-en="Ask: Can I Take Unpaid Leave? Or What's The Notice Period If I Resign?"
+                        placeholder="اسأل: هل أستطيع آخذ إجازة بدون راتب؟ أو ما هي فترة الإشعار إذا استقلت؟"
+                        rows="1"
+                    ></textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-line">
+                <span data-lang="ar">حقوق النشر © سلام – جميع الحقوق محفوظة</span>
+                <span data-lang="en">Copyright © SALAM – All Rights Reserved</span>
+            </div>
+            <div class="footer-line">
+                <span data-lang="ar">هذا النظام يستخرج معلومات عامة مستندة لنظام العمل السعودي، ولا يُعتبر استشارة قانونية رسمية</span>
+                <span data-lang="en">This System Extracts General Information Based On Saudi Labor Law And Is Not Considered Official Legal Consultation</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ==============================
+        // Configuration
+        // ==============================
+        const API_BASE = "http://localhost:8000";
+
+        // ==============================
+        // DOM References
+        // ==============================
+        const chatScroll = document.getElementById("chatScroll");
+        const userInput = document.getElementById("userInput");
+        const sendBtn = document.getElementById("sendBtn");
+        const statusDot = document.getElementById("statusDot");
+
+        // ==============================
+        // Language Switching
+        // ==============================
+        function switchLanguage(lang) {
+            document.body.setAttribute('data-current-lang', lang);
+            
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+            }
+            
+            const input = document.getElementById('userInput');
+            if (lang === 'ar') {
+                input.placeholder = input.getAttribute('data-placeholder-ar');
+            } else {
+                input.placeholder = input.getAttribute('data-placeholder-en');
+            }
+            
+            localStorage.setItem('salam_lang', lang);
+        }
+
+        function loadLanguagePreference() {
+            const savedLang = localStorage.getItem('salam_lang') || 'ar';
+            document.getElementById('languageSwitcher').value = savedLang;
+            switchLanguage(savedLang);
+        }
+
+        // ==============================
+        // Smooth Scroll
+        // ==============================
+        function scrollToChat() {
+            document.getElementById('chatSection').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // ==============================
+        // Message Handling
+        // ==============================
+        function appendUserMessage(text) {
+            const div = document.createElement("div");
+            div.className = "msg me";
+            const currentLang = document.body.getAttribute('data-current-lang');
+            const roleText = currentLang === 'ar' ? 'أنت' : 'You';
+            div.innerHTML = `
+                <span class="role">${roleText}</span>
+                <div>${escapeHtml(text)}</div>
+            `;
+            chatScroll.appendChild(div);
+            chatScroll.scrollTop = chatScroll.scrollHeight;
+        }
+
+        function appendBotMessage(answer, citationsArray) {
+            const div = document.createElement("div");
+            div.className = "msg bot";
+            const currentLang = document.body.getAttribute('data-current-lang');
+
+            const isError = answer.includes("تعذر الوصول") || answer.includes("API يعمل");
+            
+            let citationsHTML = "";
+            if (Array.isArray(citationsArray) && citationsArray.length > 0) {
+                const citationsTitle = currentLang === 'ar' ? 'المواد المستند عليها:' : 'Referenced Articles:';
+                const list = citationsArray.map((c, idx) => {
+                    const artId = c.article_id || (currentLang === 'ar' ? "مادة غير معروفة" : "Unknown Article");
+                    const isWarning = !c.article_id;
+                    const src = c.source || "";
+                    const score = (c.score !== undefined && c.score !== null)
+                        ? `score=${Number(c.score).toFixed(3)}`
+                        : "";
+
+                    return `
+                        <div class="citation-item ${isWarning ? 'status-warning' : ''}">
+                            <div class="citation-article">${escapeHtml(artId)}</div>
+                            <div class="citation-src">${escapeHtml(src)}</div>
+                            ${score ? `<div class="citation-score">${escapeHtml(score)}</div>` : ''}
+                        </div>
+                    `;
+                }).join("");
+
+                citationsHTML = `
+                    <div class="citations-block">
+                        <div class="citations-title">${citationsTitle}</div>
+                        ${list}
+                    </div>
+                `;
+            }
+
+            const answerTitle = currentLang === 'ar' ? 'الإجابة:' : 'Answer:';
+            const answerContent = isError 
+                ? `<div class="status-error">${formatAnswer(answer)}</div>`
+                : `<div class="answer-box">
+                     <div class="answer-box-title">${answerTitle}</div>
+                     ${formatAnswer(answer)}
+                   </div>`;
+
+            div.innerHTML = `
+                <span class="role">SALAM</span>
+                ${answerContent}
+                ${citationsHTML}
+            `;
+
+            chatScroll.appendChild(div);
+            chatScroll.scrollTop = chatScroll.scrollHeight;
+        }
+
+        function escapeHtml(str) {
+            if (str === undefined || str === null) return "";
+            return str
+              .replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;");
+        }
+
+        function formatAnswer(txt) {
+            if (!txt) return "";
+            const escaped = escapeHtml(txt);
+
+            return escaped
+              .split(/\n+/)
+              .map(line => {
+                const m = line.match(/^(\d+)\.\s*(.*)$/);
+                if (m) {
+                    return `
+                        <div class="answer-line-numbered">
+                            <span class="answer-number">${m[1]}.</span>
+                            <span class="answer-text">${m[2]}</span>
+                        </div>
+                    `;
+                } else {
+                    return `<div class="answer-line">${line}</div>`;
+                }
+              })
+              .join("");
+        }
+
+        // ==============================
+        // Health Check
+        // ==============================
+        
+
+      async function checkHealth() {
+    const statusTextEl = document.getElementById('statusText');
+    
+    try {
+        const res = await fetch(`${API_BASE}/health`, { method: "GET" });
+        if (!res.ok) throw new Error("bad status");
+        const data = await res.json();
+        if (data.status === "ok") {
+            statusDot.classList.add('online');
+            statusTextEl.innerHTML = `
+                <span data-lang="ar">متصل</span>
+                <span data-lang="en">Online</span>
+            `;
+        } else {
+            throw new Error("not ok");
+        }
+    } catch (err) {
+        statusDot.classList.remove('online');
+        statusTextEl.innerHTML = `
+            <span data-lang="ar">غير متصل</span>
+            <span data-lang="en">Offline</span>
+        `;
+    }
+}
+
+        async function sendMessage() {
+            const question = userInput.value.trim();
+            if (!question) return;
+            const currentLang = document.body.getAttribute('data-current-lang');
+
+            appendUserMessage(question);
+
+            const loadingDiv = document.createElement("div");
+            loadingDiv.className = "msg bot";
+            const loadingText = currentLang === 'ar' ? '...جاري المعالجة' : 'Processing...';
+            loadingDiv.innerHTML = `
+                <span class="role">SALAM</span>
+                <div class="status-processing">
+                    ${loadingText}
+                </div>
+            `;
+            chatScroll.appendChild(loadingDiv);
+            chatScroll.scrollTop = chatScroll.scrollHeight;
+
+            let respJson = null;
+            try {
+                const resp = await fetch(`${API_BASE}/ask`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ 
+                        question, 
+                    lang: currentLang 
+                    })
+                    
+                });
+                respJson = await resp.json();
+            } catch (err) {
+                const errorMsg = currentLang === 'ar' 
+                    ? "تعذر الوصول إلى الخادم. تأكد أن الـ API يعمل."
+                    : "Unable to reach the server. Make sure the API is running.";
+                respJson = {
+                    answer: errorMsg,
+                    citations: []
+                };
+            }
+
+            chatScroll.removeChild(loadingDiv);
+            appendBotMessage(respJson.answer, respJson.citations);
+
+            userInput.value = "";
+            userInput.focus();
+        }
+
+        // ==============================
+        // Events
+        // ==============================
+        sendBtn.addEventListener("click", sendMessage);
+
+        userInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        checkHealth();
+    </script>
+</body>
+</html>
